@@ -7,4 +7,11 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  theme: {
+    extend: {
+      animation: {
+        'spin-slow': 'spin 20s linear infinite',
+      }
+    },
+  },
 }

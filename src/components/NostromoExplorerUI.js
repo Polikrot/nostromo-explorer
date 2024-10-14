@@ -1,6 +1,32 @@
 import React from 'react';
 import { Monitor, AlertTriangle, Battery, Compass, Map, Settings, Users } from 'lucide-react';
 
+const RotatingEarthGlobe = () => (
+  <div className="relative w-full h-full flex items-center justify-center">
+    <div className="w-64 h-64 rounded-full bg-green-900 relative overflow-hidden animate-spin-slow">
+      <div className="absolute inset-0 bg-green-700">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-full h-1 bg-green-900"
+            style={{ top: `${i * 20}%`, transform: `rotate(${i * 15}deg)` }}
+          />
+        ))}
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute top-0 bottom-0 w-1 bg-green-900"
+            style={{ left: `${i * 14}%`, transform: `rotate(${i * 15}deg)` }}
+          />
+        ))}
+      </div>
+    </div>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="text-green-500 text-xs">Earth</div>
+    </div>
+  </div>
+);
+
 const NostromoExplorerUI = () => {
   return (
     <div className="bg-black text-green-500 p-4 h-screen font-mono">
@@ -23,12 +49,8 @@ const NostromoExplorerUI = () => {
         
         <section className="flex-grow p-4">
           <h2 className="text-xl mb-4">Planet Surface</h2>
-          <div className="border border-green-500 h-[calc(100%-2rem)] flex items-center justify-center">
-            <p className="text-center">
-              [3D View of Planet Surface]
-              <br />
-              (Placeholder for interactive 3D environment)
-            </p>
+          <div className="border border-green-500 h-[calc(100%-2rem)]">
+            <RotatingEarthGlobe />
           </div>
         </section>
         
